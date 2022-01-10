@@ -20,8 +20,6 @@
         app:menu="@menu/menu_bottom"
         app:labelVisibilityMode="unlabeled"
         app:itemBackground="@color/cardview_dark_background"
-        app:itemIconTint="@drawable/item_color"
-        app:itemTextColor="@drawable/item_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
