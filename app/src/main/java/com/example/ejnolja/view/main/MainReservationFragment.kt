@@ -1,4 +1,4 @@
-package com.example.ejnolja.view
+package com.example.ejnolja.view.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.ejnolja.view
+package com.example.ejnolja.view.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.example.ejnolja.BlankViewModel
 import com.example.ejnolja.R
 
-class MainSearchFragment : Fragment() {
+class MainRestFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainReservationFragment()
@@ -21,7 +21,7 @@ class MainSearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main_search, container, false)
+        return inflater.inflate(R.layout.fragment_main_rest, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

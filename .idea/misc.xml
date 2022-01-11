@@ -4,13 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/drawable/ic_launcher_background.xml" value="0.135" />
+        <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/activity_login.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/activity_reservation_info.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/activity_rest_info.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/activity_splash.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/blank_fragment.xml" value="0.1" />
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/fragment_main_reservation.xml" value="0.1" />
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/fragment_main_rest.xml" value="0.1" />
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/fragment_main_search.xml" value="0.1" />
         <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/layout/menu_bottom.xml" value="0.1" />
+        <entry key="..\:/Users/jonguk/Documents/EJNolja/app/src/main/res/menu/menu_bottom.xml" value="0.25729166666666664" />
       </map>
     </option>
   </component>
