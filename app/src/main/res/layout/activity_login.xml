@@ -28,6 +28,10 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:maxLength="15"
             android:id="@+id/user_id"/>
     </LinearLayout>
         <LinearLayout
@@ -41,13 +45,17 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:maxLength="15"
                 android:id="@+id/user_pwd"/>
         </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_login"
-            android:backgroundTint="@color/material_on_surface_stroke"
+            android:backgroundTint="@color/purple_500"
             android:layout_gravity="center"
             android:text="로그인"/>
         <TextView

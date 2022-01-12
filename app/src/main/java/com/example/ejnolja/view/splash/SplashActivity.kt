@@ -29,7 +29,7 @@ class SplashActivity:AppCompatActivity() {
         handler.postDelayed(Runnable {
             doSplash()
             observeSplash()
-        }, 3000)
+        }, 1000)
 
 
     }

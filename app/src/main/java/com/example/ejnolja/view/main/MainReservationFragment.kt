@@ -1,33 +1,46 @@
 package com.example.ejnolja.view.main
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ejnolja.BlankViewModel
-import com.example.ejnolja.R
+import androidx.appcompat.app.AppCompatActivity
+import com.example.ejnolja.databinding.FragmentMainReservationBinding
+import com.example.ejnolja.utils.UserPreferences
+import com.example.ejnolja.view.login.LoginActivity
 
 class MainReservationFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainReservationFragment()
     }
+    private var lBinding: FragmentMainReservationBinding? = null
+    private val binding get() = lBinding!!
 
-    private lateinit var viewModel: BlankViewModel
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
+        lBinding = FragmentMainReservationBinding.inflate(inflater, container, false)
+        return binding.root
+        //return inflater.inflate(R.layout.fragment_main_reservation, container, false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_main_reservation, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BlankViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnLogout.setOnClickListener{
+            Log.d("MainReservation",UserPreferences.id)
+            UserPreferences.logout()
+            Log.d("MainReservatin id",UserPreferences.id)
+            startActivity(Intent(context,LoginActivity::class.java))
+            (activity as AppCompatActivity).finishAffinity()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        lBinding = null
     }
 
 }
