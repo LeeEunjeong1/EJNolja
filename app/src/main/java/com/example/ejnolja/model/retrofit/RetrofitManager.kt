@@ -2,6 +2,7 @@ package com.example.ejnolja.model.retrofit
 import android.util.Log
 import com.example.ejnolja.model.models.JoinResponse
 import com.example.ejnolja.model.models.LoginResponse
+import com.example.ejnolja.model.models.RestByRegionResponse
 import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,6 +56,24 @@ class RetrofitManager {
                 }else{
                     completion(Responses.OK, responses.body().toString())
                 }
+            }
+        })
+    }
+
+    fun getRestByRegion(areaName: String, numOfRows: String, pageNo: String,completion: (Responses, String) -> Unit){
+        val call = iRetrofit?.getRestByRegion(areaName, numOfRows, pageNo)?:return
+
+        call.enqueue(object: Callback<RestByRegionResponse>{
+            override fun onFailure(call: Call<RestByRegionResponse>, t: Throwable) {
+                completion(Responses.FAIL, t.toString())
+                return t.toString()
+                Log.d(TAG, "- onFailure: ");
+            }
+
+            override fun onResponse(call: Call<RestByRegionResponse>, responses: Response<RestByRegionResponse>) {
+                Log.d(TAG, "- onResponse: ${responses.body()} ")
+                Log.d(TAG, "- onResponse: status code is ${responses.code()}")
+                completion(Responses.OK, )
             }
         })
     }

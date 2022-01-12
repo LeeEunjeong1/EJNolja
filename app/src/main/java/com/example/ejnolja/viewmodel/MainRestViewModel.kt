@@ -1,4 +1,4 @@
-package com.example.ejnolja.view.join
+package com.example.ejnolja.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -11,8 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class JoinViewModel : ViewModel() {
-
+class MainRestViewModel :ViewModel() {
 
     private val _isSuccess: MutableLiveData<Unit> = MutableLiveData()
     val isSuccess: LiveData<Unit> get() = _isSuccess
@@ -21,19 +20,18 @@ class JoinViewModel : ViewModel() {
     val isError: LiveData<String> get() = _isError
 
 
-    fun joinRequest(params:HashMap<Any,Any>){
+    fun getRestByRegion(areaName: String, numOfRows: String, pageNo: String){
         CoroutineScope(Dispatchers.IO).launch{
             try{
-                RetrofitManager.instance.join(params,completion = {
-                        loginResponse, _ ->
-                    when(loginResponse){
+                RetrofitManager.instance.getRestByRegion(areaName = areaName, numOfRows = numOfRows, pageNo = pageNo,completion = {
+                        RestByRegionResponse, _ ->
+                    when(RestByRegionResponse){
                         Responses.FAIL -> {
-                            _isError.postValue("아이디 또는 비밀번호를 확인해주세요.")
-                            Log.d("login Fail", Responses.FAIL.toString())
+                            _isError.postValue("데이터 불러오기 실패.")
                         }
                         Responses.OK -> {
+                            Log.d("MainRestViewModel",RestByRegionResponse.toString())
                             _isSuccess.postValue(Unit)
-                            Log.d("login Success", UserPreferences.id)
                         }
                     }
                 })
@@ -44,4 +42,5 @@ class JoinViewModel : ViewModel() {
         }
 
     }
+
 }

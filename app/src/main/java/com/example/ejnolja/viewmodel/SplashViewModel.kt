@@ -1,4 +1,4 @@
-package com.example.ejnolja.view.splash
+package com.example.ejnolja.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

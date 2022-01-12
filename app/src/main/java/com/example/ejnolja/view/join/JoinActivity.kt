@@ -6,11 +6,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.ejnolja.databinding.ActivityLoginBinding
 import com.example.ejnolja.databinding.ActivitySignupBinding
 import com.example.ejnolja.view.login.LoginActivity
-import com.example.ejnolja.view.login.LoginViewModel
-import com.example.ejnolja.view.main.MainActivity
+import com.example.ejnolja.viewmodel.JoinViewModel
 
 class JoinActivity:AppCompatActivity(){
 

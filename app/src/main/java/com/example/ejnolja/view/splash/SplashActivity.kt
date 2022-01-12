@@ -1,6 +1,5 @@
 package com.example.ejnolja.view.splash
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +10,7 @@ import com.example.ejnolja.databinding.ActivitySplashBinding
 import com.example.ejnolja.utils.UserPreferences
 import com.example.ejnolja.view.login.LoginActivity
 import com.example.ejnolja.view.main.MainActivity
+import com.example.ejnolja.viewmodel.SplashViewModel
 
 
 class SplashActivity:AppCompatActivity() {

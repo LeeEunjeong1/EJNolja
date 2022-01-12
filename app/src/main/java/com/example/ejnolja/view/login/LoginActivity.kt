@@ -7,10 +7,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.ejnolja.databinding.ActivityLoginBinding
-import com.example.ejnolja.model.retrofit.Responses
-import com.example.ejnolja.model.retrofit.RetrofitManager
 import com.example.ejnolja.view.join.JoinActivity
 import com.example.ejnolja.view.main.MainActivity
+import com.example.ejnolja.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
