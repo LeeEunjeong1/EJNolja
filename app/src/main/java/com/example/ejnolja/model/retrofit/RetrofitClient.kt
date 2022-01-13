@@ -1,39 +1,44 @@
 package com.example.ejnolja.model.retrofit
-import android.util.Log
-import okhttp3.OkHttpClient
+
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
+import java.io.IOException
+
 
 object RetrofitClient {
     private var retrofitClient: Retrofit? = null
-    private val TAG: String = "로그"
+    private val TAG: String = "Retrofit 통신"
+    private val BASE_URL = "http://3.144.155.186:3001"
 
-    fun getClient(baseUrl: String): Retrofit?{
-        val client = OkHttpClient.Builder()
+    fun getClient(): Retrofit?{
 
-        val loggingInterceptor = HttpLoggingInterceptor(object: HttpLoggingInterceptor.Logger{
-            override fun log(message: String) {
-                Log.d(TAG, "RetrofitClient - log: $message");
-            }
-        })
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        client.addInterceptor(loggingInterceptor)
 
-        client.connectTimeout(10, TimeUnit.SECONDS)
-        client.readTimeout(10, TimeUnit.SECONDS)
-        client.writeTimeout(10, TimeUnit.SECONDS)
-        client.retryOnConnectionFailure(true)
-
-        if(retrofitClient == null){
-            retrofitClient = Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client.build())
+        val headerInterceptor = Interceptor {
+            val request = it.request()
+                .newBuilder()
+                .addHeader("Content-Type", "application/json; charset=utf-8")
                 .build()
+            return@Interceptor it.proceed(request)
         }
-        return retrofitClient
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(headerInterceptor)
+            .addInterceptor(httpLoggingInterceptor)
+            .build()
+
+        return Retrofit.Builder()
+            .client(client)
+            .baseUrl(BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
+
 }

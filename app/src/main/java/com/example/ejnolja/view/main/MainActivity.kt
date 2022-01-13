@@ -3,6 +3,7 @@ package com.example.ejnolja.view.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ejnolja.R
+import com.example.ejnolja.view.main.rest.MainRestFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

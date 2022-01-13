@@ -9,6 +9,10 @@ import retrofit2.http.*
 
 interface RetrofitInterface {
     @FormUrlEncoded
+    @Headers(
+        "accept: application/json",
+        "content-type: application/json"
+    )
     @POST("/auth/login")
     fun loginRequest(
         @Field("id") username: String,
@@ -22,7 +26,7 @@ interface RetrofitInterface {
 
     @GET("/rest/region")
     fun getRestByRegion(
-        @Query("areaName") areaName:String,
+        @Query("areaName",encoded = true) areaName:String,
         @Query("numOfRows") numOfRows:String,
         @Query("pageNo") pageNo:String
     ): Call<RestByRegionResponse>

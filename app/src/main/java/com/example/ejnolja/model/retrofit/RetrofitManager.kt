@@ -9,14 +9,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RetrofitManager {
-    private val BASE_URL = "http://3.144.155.186:3001"
+
     private val TAG: String = "RetrofitManager"
 
     companion object{
         val instance = RetrofitManager()
     }
 
-    private val iRetrofit: RetrofitInterface? = RetrofitClient.getClient(BASE_URL)?.create(RetrofitInterface::class.java)
+    private val iRetrofit: RetrofitInterface? = RetrofitClient.getClient()?.create(RetrofitInterface::class.java)
 
     fun login(id: String, password: String, completion: (Responses, String) -> Unit){
         val call = iRetrofit?.loginRequest(id, password) ?: return
@@ -60,21 +60,4 @@ class RetrofitManager {
         })
     }
 
-    fun getRestByRegion(areaName: String, numOfRows: String, pageNo: String,completion: (Responses, String) -> Unit){
-        val call = iRetrofit?.getRestByRegion(areaName, numOfRows, pageNo)?:return
-
-        call.enqueue(object: Callback<RestByRegionResponse>{
-            override fun onFailure(call: Call<RestByRegionResponse>, t: Throwable) {
-                completion(Responses.FAIL, t.toString())
-                return t.toString()
-                Log.d(TAG, "- onFailure: ");
-            }
-
-            override fun onResponse(call: Call<RestByRegionResponse>, responses: Response<RestByRegionResponse>) {
-                Log.d(TAG, "- onResponse: ${responses.body()} ")
-                Log.d(TAG, "- onResponse: status code is ${responses.code()}")
-                completion(Responses.OK, )
-            }
-        })
-    }
 }
