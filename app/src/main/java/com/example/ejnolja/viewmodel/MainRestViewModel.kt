@@ -1,6 +1,5 @@
 package com.example.ejnolja.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +9,7 @@ import com.example.ejnolja.model.retrofit.MainRepository
 import com.example.ejnolja.model.retrofit.Responses
 import com.example.ejnolja.model.retrofit.RetrofitManager
 import com.example.ejnolja.utils.UserPreferences
+import com.example.ejnolja.view.main.rest.MainRestFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,6 +39,10 @@ class MainRestViewModel(private val repository: MainRepository) :ViewModel() {
                _isSuccess.postValue(response.body())
             }
         })
+    }
+
+    fun load(){
+        getRestByRegion("서울",MainRestFragment.restPageSize.toString(),MainRestFragment.restPage.toString())
     }
 
 }
