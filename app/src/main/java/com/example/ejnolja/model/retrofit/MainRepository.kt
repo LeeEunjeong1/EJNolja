@@ -8,6 +8,6 @@ class MainRepository constructor(private val retrofitClient: RetrofitClient) {
 
     private val iRetrofit: RetrofitInterface? = retrofitClient.getClient()?.create(RetrofitInterface::class.java)
 
-    fun getRestByRegion(areaName:String,numOfRows:String,pageNo:String) = iRetrofit?.getRestByRegion(areaName,numOfRows,pageNo)
+    fun getRestByRegion(areaName:String,numOfRows:Int,pageNo:Int) = iRetrofit?.getRestByRegion(areaName,numOfRows,pageNo)
 
 }

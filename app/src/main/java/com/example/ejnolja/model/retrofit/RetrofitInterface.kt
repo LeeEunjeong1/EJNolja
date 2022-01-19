@@ -27,7 +27,7 @@ interface RetrofitInterface {
     @GET("/rest/region")
     fun getRestByRegion(
         @Query("areaName",encoded = true) areaName:String,
-        @Query("numOfRows") numOfRows:String,
-        @Query("pageNo") pageNo:String
+        @Query("numOfRows") numOfRows:Int,
+        @Query("pageNo") pageNo:Int
     ): Call<RestByRegionResponse>
 }

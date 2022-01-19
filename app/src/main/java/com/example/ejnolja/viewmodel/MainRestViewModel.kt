@@ -27,7 +27,7 @@ class MainRestViewModel(private val repository: MainRepository) :ViewModel() {
     val isError: LiveData<String> get() = _isError
 
 
-    fun getRestByRegion(areaName: String, numOfRows: String, pageNo: String){
+    fun getRestByRegion(areaName: String, numOfRows: Int, pageNo: Int){
 
         val response = repository.getRestByRegion(areaName,numOfRows,pageNo)
         response?.enqueue(object : Callback<RestByRegionResponse>{
@@ -42,7 +42,7 @@ class MainRestViewModel(private val repository: MainRepository) :ViewModel() {
     }
 
     fun load(){
-        getRestByRegion("서울",MainRestFragment.restPageSize.toString(),MainRestFragment.restPage.toString())
+        getRestByRegion("서울",MainRestFragment.restPageSize,MainRestFragment.restPage)
     }
 
 }
