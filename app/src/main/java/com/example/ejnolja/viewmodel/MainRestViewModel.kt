@@ -42,7 +42,7 @@ class MainRestViewModel(private val repository: MainRepository) :ViewModel() {
     }
 
     fun load(){
-        getRestByRegion("서울",MainRestFragment.restPageSize,MainRestFragment.restPage)
+        getRestByRegion(MainRestFragment.region,MainRestFragment.restPageSize,MainRestFragment.restPage)
     }
 
 }
