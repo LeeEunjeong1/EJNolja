@@ -32,6 +32,8 @@ class RestAdapter: RecyclerView.Adapter<RestViewHolder>() {
     override fun onBindViewHolder(holder: RestViewHolder, position: Int) {
         val rest = rest[position]
         holder.binding.name.text = rest.title
+        holder.binding.addr1.text = rest.addr1
+        holder.binding.addr2.text = rest.addr2
         Glide.with(holder.itemView.context).load(rest.firstimage).into(holder.binding.imageview)
 
     }

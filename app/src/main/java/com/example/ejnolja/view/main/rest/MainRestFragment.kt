@@ -55,6 +55,7 @@ class MainRestFragment : Fragment() {
 
     private fun initLayout() {
         with(binding){
+            toolbar.toolbarTitle.text = "지역별 관광지"
             recyclerView.adapter = adapter
             restPage =1
             viewModel.load()
