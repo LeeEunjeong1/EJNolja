@@ -8,4 +8,5 @@
 - RecyclerView
 - Spinner처리를 통한 지역별 관광지 검색
 
-![image](https://user-images.githubusercontent.com/38210019/150458398-0391bf7e-b0a2-4b3c-ba9b-aaa30965b458.png)
+
+![image](https://user-images.githubusercontent.com/38210019/150756218-14a46bf6-93cc-4942-9366-9b2a70a860d5.png)
