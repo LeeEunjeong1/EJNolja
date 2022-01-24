@@ -10,6 +10,7 @@ import com.example.ejnolja.model.retrofit.Responses
 import com.example.ejnolja.model.retrofit.RetrofitManager
 import com.example.ejnolja.utils.UserPreferences
 import com.example.ejnolja.view.main.rest.MainRestFragment
+import com.example.ejnolja.view.main.search.MainSearchFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,21 +29,31 @@ class MainRestViewModel(private val repository: MainRepository) :ViewModel() {
 
 
     fun getRestByRegion(areaName: String, numOfRows: Int, pageNo: Int){
+        CoroutineScope(Dispatchers.Default).launch {
+            try{
 
-        val response = repository.getRestByRegion(areaName,numOfRows,pageNo)
-        response?.enqueue(object : Callback<RestByRegionResponse>{
-            override fun onFailure(call: Call<RestByRegionResponse>, t: Throwable) {
-                _isError.postValue("error")
-            }
+                val response = repository.getRestByRegion(areaName,numOfRows,pageNo)
+                response?.enqueue(object : Callback<RestByRegionResponse>{
+                    override fun onFailure(call: Call<RestByRegionResponse>, t: Throwable) {
+                        _isError.postValue("error")
+                    }
 
-            override fun onResponse(call: Call<RestByRegionResponse>,response: Response<RestByRegionResponse>) {
-               _isSuccess.postValue(response.body())
+                    override fun onResponse(call: Call<RestByRegionResponse>,response: Response<RestByRegionResponse>) {
+                        _isSuccess.postValue(response.body())
+                    }
+                })
+            } catch(e: Exception){
+                _isError.postValue(e.message)
             }
-        })
+        }
+
     }
 
     fun load(){
         getRestByRegion(MainRestFragment.region,MainRestFragment.restPageSize,MainRestFragment.restPage)
+    }
+    fun search(){
+        getRestByRegion(MainSearchFragment.region,MainSearchFragment.restPageSize,MainSearchFragment.restPage)
     }
 
 }
