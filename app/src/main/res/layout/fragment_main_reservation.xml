@@ -17,29 +17,20 @@
             android:layout_height="wrap_content"
             android:text="로그아웃"/>
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="예약"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
+                android:text="textView"/>
+            <Button
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="지난 예약"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:text="button"/>
         </LinearLayout>
 
     </LinearLayout>

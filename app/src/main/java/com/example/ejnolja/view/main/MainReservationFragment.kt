@@ -8,9 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import com.example.ejnolja.databinding.FragmentMainReservationBinding
 import com.example.ejnolja.utils.UserPreferences
 import com.example.ejnolja.view.login.LoginActivity
+import java.io.DataInputStream
+import java.io.DataOutput
+import java.io.DataOutputStream
+import java.net.Socket
 
 class MainReservationFragment : Fragment() {
 
@@ -36,11 +41,48 @@ class MainReservationFragment : Fragment() {
             startActivity(Intent(context,LoginActivity::class.java))
             (activity as AppCompatActivity).finishAffinity()
         }
+        binding.button.setOnClickListener {
+            var thread = NetworkThread()
+            thread.start()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         lBinding = null
+    }
+
+    inner class NetworkThread : Thread(){
+        override fun run(){
+            try{
+                var socket = Socket("ip주소",55555)
+
+                var input = socket.getInputStream()
+                var dis = DataInputStream(input)
+
+                var output = socket.getOutputStream()
+                var dos = DataOutputStream(output)
+
+                var data1 = dis.readInt()
+                var data2 = dis.readDouble()
+                var data3 = dis.readUTF()
+
+                dos.writeInt(200)
+                dos.writeDouble(22.22)
+                dos.writeUTF("클라이언트가 보낸 문자열")
+
+                socket.close()
+
+                run{
+                    binding.textView.text = "data1 : ${data1}\n"
+                    binding.textView.append("data2 : ${data2}\n")
+                    binding.textView.append("data2 : $data3")
+
+                }
+            }catch (e:Exception){
+                e.printStackTrace()
+            }
+        }
     }
 
 }
