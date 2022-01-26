@@ -52,6 +52,7 @@ class MainReservationFragment : Fragment() {
         lBinding = null
     }
 
+    //소켓통신 Thread
     inner class NetworkThread : Thread(){
         override fun run(){
             try{
