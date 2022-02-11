@@ -16,6 +16,7 @@ object RetrofitClient {
 
     fun getClient(): Retrofit?{
 
+        //통신 로그
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
