@@ -19,9 +19,6 @@ import java.net.Socket
 
 class MainReservationFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainReservationFragment()
-    }
     private var lBinding: FragmentMainReservationBinding? = null
     private val binding get() = lBinding!!
 
@@ -56,17 +53,17 @@ class MainReservationFragment : Fragment() {
     inner class NetworkThread : Thread(){
         override fun run(){
             try{
-                var socket = Socket("ip주소",55555)
+                val socket = Socket("ip주소",55555)
 
-                var input = socket.getInputStream()
-                var dis = DataInputStream(input)
+                val input = socket.getInputStream()
+                val dis = DataInputStream(input)
 
-                var output = socket.getOutputStream()
-                var dos = DataOutputStream(output)
+                val output = socket.getOutputStream()
+                val dos = DataOutputStream(output)
 
-                var data1 = dis.readInt()
-                var data2 = dis.readDouble()
-                var data3 = dis.readUTF()
+                val data1 = dis.readInt()
+                val data2 = dis.readDouble()
+                val data3 = dis.readUTF()
 
                 dos.writeInt(200)
                 dos.writeDouble(22.22)
