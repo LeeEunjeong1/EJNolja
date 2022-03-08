@@ -11,3 +11,7 @@
 
 
 ![image](https://user-images.githubusercontent.com/38210019/150756218-14a46bf6-93cc-4942-9366-9b2a70a860d5.png)
+
+### 사용 API
+-  한국관광공사_국문 관광정보 서비스
+- https://www.data.go.kr/data/15057787/openapi.do
