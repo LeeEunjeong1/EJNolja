@@ -3,6 +3,7 @@ package com.example.ejnolja.view.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +26,7 @@ class SplashActivity:AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
 
-        val handler = Handler()
+        val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(Runnable {
             doSplash()
             observeSplash()
