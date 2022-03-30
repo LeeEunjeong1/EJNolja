@@ -46,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
             }
             goSignup.setOnClickListener{
                 startActivity(Intent(this@LoginActivity,JoinActivity::class.java))
-                finish()
             }
         }
 
