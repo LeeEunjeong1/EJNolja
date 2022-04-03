@@ -8,7 +8,8 @@
 - MVVM Pattern
 
 ## 기능
-- 로그인(자동로그인) / 회원가입 (Retrofit통신을 이용한 RestAPI 구현)
+- 로그인 / 회원가입 (Retrofit통신을 이용한 RestAPI 구현)
+- 자동로그인 (SharedPreferences)
 - 관광 정보 무한 스크롤 (RecyclerView)
 - 지역별 광광지 모아보기 (Spinner)
 - 지역 검색기능
